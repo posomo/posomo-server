@@ -1,18 +1,18 @@
-package com.posomo.project.domain.restaurant;
+package com.posomo.project.domain.restaurant.entity;
 
+import com.posomo.project.domain.restaurant.entity.common.OneToOne.RestaurantOneToOneSubEntity;
 import jakarta.persistence.*;
+import java.math.BigDecimal;
+import lombok.Getter;
 
-@Table(name = "restaurant_location")
+
 @Entity
-public class RestaurantLocation {
-    @GeneratedValue
-    @Id
-    private Long id;
-    private Long restaurantId;
-    @Column(columnDefinition = "varchar(200)")
+@Getter
+public class RestaurantLocation extends RestaurantOneToOneSubEntity {
+    @Column(length = 200)
     private String roadAddress;
-    @Column(columnDefinition = "decimal")
-    private Double latitude;
-    @Column(columnDefinition = "decimal")
-    private Double longitude;
+    @Column()
+    private BigDecimal latitude;
+    @Column()
+    private BigDecimal longitude;
 }

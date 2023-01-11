@@ -1,4 +1,4 @@
-package com.posomo.project.domain;
+package com.posomo.project.core.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +9,6 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 public class Category {
     @GeneratedValue
     @Id

@@ -1,18 +1,14 @@
-package com.posomo.project.domain.restaurant;
+package com.posomo.project.domain.restaurant.entity;
 
-import jakarta.persistence.Column;
+import com.posomo.project.core.EmbeddableRange;
+import com.posomo.project.domain.restaurant.entity.common.OneToOne.RestaurantOneToOneSubEntity;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import lombok.Getter;
 
 @Entity
-public class RestaurantMainMenuPriceRange {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private Long restaurantId;
-    @Column(columnDefinition = "integer")
-    private Integer from;
-    @Column(columnDefinition = "integer")
-    private Integer to;
+@Getter
+public class RestaurantMainMenuPriceRange extends RestaurantOneToOneSubEntity {
+    @Embedded
+    private EmbeddableRange<Integer> range;
 }
