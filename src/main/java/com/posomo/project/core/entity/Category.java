@@ -14,6 +14,6 @@ public class Category {
     @GeneratedValue
     @Id
     private Long id;
-    @Column(columnDefinition = "varchar(20)")
+    @Column(length = 20)
     private String name;
 }
