@@ -2,10 +2,8 @@ package com.posomo.project.domain.restaurant.entity;
 
 import com.posomo.project.domain.restaurant.entity.common.ManyToOne.RestaurantManyToOneSubEntity;
 import com.posomo.project.domain.restaurant.entity.common.OneToOne.RestaurantOneToOneSubEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.util.UUID;
 import lombok.Getter;
 
@@ -17,6 +15,8 @@ public class RestaurantMenu extends RestaurantManyToOneSubEntity {
     private Integer price;
     @Column(name = "is_main_menu")
     private Boolean isMainMenu;
+    @OneToOne(mappedBy = "restaurantMenu")
+    private RestaurantMainMenu restaurantMainMenu;
     @Column(length = 300)
     private String pictureUrl;
 }
