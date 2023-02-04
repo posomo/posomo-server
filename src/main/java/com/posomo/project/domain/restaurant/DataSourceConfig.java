@@ -24,7 +24,7 @@ public class DataSourceConfig {
     public LocalContainerEntityManagerFactoryBean restaurantEntityManager(){
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(restaurantDataSource());
-        em.setPackagesToScan(new String[]{"com.posomo.project.domain.restaurant"});
+        em.setPackagesToScan(new String[]{"com.posomo.project.domain.restaurant","com.posomo.project.core"});
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }
