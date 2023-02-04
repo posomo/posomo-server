@@ -1,4 +1,4 @@
-package com.posomo.project.core;
+package com.posomo.project.domain.restaurant.entity.core;
 
 import jakarta.persistence.Embeddable;
 

@@ -1,24 +1,28 @@
 package com.posomo.project.domain.restaurant.entity;
 
-import com.posomo.project.core.entity.DateEntity;
+import com.posomo.project.domain.restaurant.entity.core.entity.BaseEntity;
+import com.posomo.project.domain.restaurant.entity.manyToOne.RestaurantMenu;
+import com.posomo.project.domain.restaurant.entity.manyToOne.RestaurantTime;
+import com.posomo.project.domain.restaurant.entity.oneToOne.RestaurantLocation;
+import com.posomo.project.domain.restaurant.entity.oneToOne.RestaurantMainMenuPriceRange;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-public class Restaurant extends DateEntity {
+@Getter
+@EntityListeners(AuditingEntityListener.class)
+public class Restaurant extends BaseEntity {
     @Column(length = 20)
     private String name;
     @Column(length = 100)
@@ -35,5 +39,12 @@ public class Restaurant extends DateEntity {
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RestaurantTime> times = new ArrayList<>();
+
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
 }
